@@ -76,13 +76,13 @@ class KMeansGUI(tk.Tk):
         for cluster_id in range(num_clusters):
             self.results_text.insert(tk.END, f"\nCluster {cluster_id}:\n")
             cluster_data = df[df['Cluster'] == cluster_id]
-            self.results_text.insert(tk.END, cluster_data[['CustomerID', 'Age', 'Annual Income (k$)', 'Spending Score (1-100)']].to_string(index=False))
+            self.results_text.insert(tk.END, cluster_data[['CustomerID', 'Gender','Age', 'Annual Income (k$)', 'Spending Score (1-100)']].to_string(index=False))
         
         # Display outliers
         if outliers:
             self.results_text.insert(tk.END, "\nOutliers:\n")
             outlier_df = df.iloc[outliers]
-            self.results_text.insert(tk.END, outlier_df[['CustomerID', 'Age', 'Annual Income (k$)', 'Spending Score (1-100)', 'Cluster']].to_string(index=False))
+            self.results_text.insert(tk.END, outlier_df[['CustomerID', 'Gender','Age', 'Annual Income (k$)', 'Spending Score (1-100)', 'Cluster']].to_string(index=False))
         else:
             self.results_text.insert(tk.END, "\nNo outliers detected.\n")
 
