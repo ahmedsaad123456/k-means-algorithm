@@ -97,11 +97,9 @@ def process_data(file_path, percentage, num_clusters):
     feature_columns = ['Age', 'Gender', 'Annual Income (k$)', 'Spending Score (1-100)']
     feature_data = df[feature_columns]
 
-    # Normalize the feature data to the range [0, 1]
-    normalized_features = (feature_data - feature_data.min()) / (feature_data.max() - feature_data.min())
-    normalized_array = normalized_features.values
 
-    cluster_labels, final_centroids, point_distances = kmeans_clustering(normalized_array, num_clusters)
+
+    cluster_labels, final_centroids, point_distances = kmeans_clustering(feature_data.values, num_clusters)
     outliers = detect_cluster_outliers(cluster_labels, point_distances)
     
     df['Cluster'] = cluster_labels
